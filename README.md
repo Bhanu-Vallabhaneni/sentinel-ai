@@ -5,14 +5,14 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
 ![Security](https://img.shields.io/badge/Domain-Cybersecurity-1F2937?style=flat-square)
 
-SentinelAI is a portfolio-ready cybersecurity project that simulates how a lightweight SOC triage workflow can use AI and anomaly detection to reduce analyst effort. It ingests authentication events, detects suspicious behavior, correlates related alerts into incidents, and generates analyst-friendly summaries with MITRE ATT&CK mappings and response guidance.
+SentinelAI is a cybersecurity project that simulates how a lightweight SOC triage workflow can use AI and anomaly detection to reduce analyst effort. It ingests authentication events, detects suspicious behavior, correlates related alerts into incidents, and generates structured summaries with MITRE ATT&CK mappings and response guidance.
 
-## Why It Stands Out
+## Overview
 
-SentinelAI is designed to be easy to explain in interviews because it combines four things recruiters care about in one project:
+SentinelAI combines several practical security workflow components in one system:
 
 - cybersecurity thinking through real alert triage scenarios
-- AI/ML skills through anomaly detection and analyst-oriented enrichment
+- AI/ML skills through anomaly detection and structured enrichment
 - software engineering through a FastAPI backend and Streamlit dashboard
 - communication skills through explainable outputs and clean project documentation
 
@@ -22,7 +22,7 @@ SentinelAI is designed to be easy to explain in interviews because it combines f
 - Normalizes activity into a consistent event schema
 - Detects repeated failed logins, suspicious success after failures, impossible travel, privileged access, and after-hours authentication
 - Adds anomaly scores with `IsolationForest`
-- Correlates suspicious detections into analyst-ready incidents
+- Correlates suspicious detections into correlated incidents
 - Generates summaries, ATT&CK mappings, and recommended triage actions
 - Exposes results through a FastAPI API and Streamlit dashboard
 
@@ -101,7 +101,7 @@ Once the API is running, open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000
 
 ## Demo Flow
 
-A simple recruiter-friendly walkthrough:
+A simple walkthrough:
 
 1. Open the dashboard and show the incident count and severity distribution.
 2. Open the highest-severity incident and walk through the evidence timeline.
@@ -113,23 +113,13 @@ See [demo-script.md](/D:/sentinel-ai/docs/demo-script.md) for a short speaking s
 
 ## Screenshots
 
-Add screenshots here once you capture them for your portfolio:
+Add screenshots here once you capture them:
 
 - `assets/dashboard-overview.png`
 - `assets/incident-detail.png`
 - `assets/api-docs.png`
 
 If you add those files later, you can embed them directly in this README.
-
-## Resume Value
-
-This project showcases:
-
-- Python engineering for security tooling
-- anomaly detection for suspicious behavior analysis
-- SOC triage and incident correlation design
-- MITRE ATT&CK mapping and analyst response guidance
-- API and dashboard development for security workflows
 
 ## Roadmap
 
