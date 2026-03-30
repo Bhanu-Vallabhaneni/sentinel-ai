@@ -5,71 +5,91 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
 ![Security](https://img.shields.io/badge/Domain-Cybersecurity-1F2937?style=flat-square)
 
-SentinelAI is a portfolio-ready cybersecurity project that simulates a lightweight SOC workflow. It ingests authentication events, detects suspicious behavior with rule-based logic and anomaly scoring, correlates related alerts into incidents, and generates analyst-friendly summaries with MITRE ATT&CK mappings and response guidance.
+SentinelAI is a portfolio-ready cybersecurity project that simulates how a lightweight SOC triage workflow can use AI and anomaly detection to reduce analyst effort. It ingests authentication events, detects suspicious behavior, correlates related alerts into incidents, and generates analyst-friendly summaries with MITRE ATT&CK mappings and response guidance.
 
-## Why This Project
+## Why It Stands Out
 
-Security teams face alert fatigue, noisy detections, and not enough analyst time. SentinelAI demonstrates how AI and automation can turn raw events into prioritized, explainable incident reports that are easier to review and discuss in interviews.
+SentinelAI is designed to be easy to explain in interviews because it combines four things recruiters care about in one project:
 
-## Features
+- cybersecurity thinking through real alert triage scenarios
+- AI/ML skills through anomaly detection and analyst-oriented enrichment
+- software engineering through a FastAPI backend and Streamlit dashboard
+- communication skills through explainable outputs and clean project documentation
 
-- Loads sample security events from JSON
-- Normalizes authentication activity into a common schema
-- Detects repeated failed logins, impossible travel, privileged logins, and off-hours access
-- Adds anomaly scores using `IsolationForest`
-- Correlates suspicious events into incidents
-- Produces analyst-ready summaries, ATT&CK mappings, and triage recommendations
-- Exposes results through a FastAPI backend and Streamlit dashboard
+## Core Capabilities
+
+- Ingests sample authentication events from structured JSON
+- Normalizes activity into a consistent event schema
+- Detects repeated failed logins, suspicious success after failures, impossible travel, privileged access, and after-hours authentication
+- Adds anomaly scores with `IsolationForest`
+- Correlates suspicious detections into analyst-ready incidents
+- Generates summaries, ATT&CK mappings, and recommended triage actions
+- Exposes results through a FastAPI API and Streamlit dashboard
 
 ## Architecture
 
-1. Ingestion: parse and normalize raw security events
-2. Detection: combine rules and anomaly scoring to flag suspicious behavior
-3. Correlation: group related detections into incidents
-4. Enrichment: generate human-readable summaries and recommended actions
-5. Presentation: API responses, dashboard views, and exportable report content
+1. Ingestion normalizes raw events into a common schema.
+2. Detection combines rule-based logic with anomaly scoring.
+3. Correlation groups suspicious events into incidents.
+4. Enrichment generates summaries, ATT&CK mappings, and response guidance.
+5. Presentation serves results through an API and dashboard.
 
-See [docs/architecture.md](/D:/sentinel-ai/docs/architecture.md) for the architecture diagram and component breakdown.
+See [architecture.md](/D:/sentinel-ai/docs/architecture.md) for the full architecture diagram and component breakdown.
 
 ## Repository Layout
 
 ```text
 sentinel-ai/
-??? app/
-?   ??? main.py
-?   ??? models.py
-?   ??? services.py
-?   ??? sample_data_loader.py
-??? dashboard/
-?   ??? app.py
-?   ??? dashboard_app.py
-??? data/
-?   ??? sample_auth_logs.json
-??? docs/
-?   ??? architecture.md
-?   ??? demo-script.md
-??? tests/
-?   ??? test_pipeline.py
-??? requirements.txt
-??? docker-compose.yml
+|-- app/
+|   |-- main.py
+|   |-- models.py
+|   |-- sample_data_loader.py
+|   `-- services.py
+|-- dashboard/
+|   |-- app.py
+|   `-- dashboard_app.py
+|-- data/
+|   `-- sample_auth_logs.json
+|-- docs/
+|   |-- architecture.md
+|   `-- demo-script.md
+|-- tests/
+|   `-- test_pipeline.py
+|-- .env.example
+|-- .gitignore
+|-- docker-compose.yml
+|-- README.md
+`-- requirements.txt
 ```
 
 ## Quick Start
 
+Create and activate a virtual environment:
+
 ```bash
 python -m venv .venv
-.venv\Scriptsctivate
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
+
+Run the API:
+
+```bash
 uvicorn app.main:app --reload
 ```
 
-Run the dashboard with:
+Run the dashboard:
 
 ```bash
-streamlit run dashboard/dashboard_app.py
+streamlit run dashboard/dashboard_app.py --server.headless true --browser.gatherUsageStats false
 ```
 
-## Endpoints
+## API Endpoints
 
 - `GET /health`
 - `GET /events`
@@ -77,16 +97,46 @@ streamlit run dashboard/dashboard_app.py
 - `GET /incidents`
 - `GET /report`
 
-## Demo
+Once the API is running, open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
-Use the dashboard to show high-severity incidents, explain why the rules fired, and walk through the generated analyst summary. A short script is included in [docs/demo-script.md](/D:/sentinel-ai/docs/demo-script.md).
+## Demo Flow
 
-## Suggested Next Enhancements
+A simple recruiter-friendly walkthrough:
+
+1. Open the dashboard and show the incident count and severity distribution.
+2. Open the highest-severity incident and walk through the evidence timeline.
+3. Explain which detections fired and how anomaly scoring contributed.
+4. Show the ATT&CK mappings and recommended analyst actions.
+5. Open the API report endpoint and explain how the same results can be consumed programmatically.
+
+See [demo-script.md](/D:/sentinel-ai/docs/demo-script.md) for a short speaking script.
+
+## Screenshots
+
+Add screenshots here once you capture them for your portfolio:
+
+- `assets/dashboard-overview.png`
+- `assets/incident-detail.png`
+- `assets/api-docs.png`
+
+If you add those files later, you can embed them directly in this README.
+
+## Resume Value
+
+This project showcases:
+
+- Python engineering for security tooling
+- anomaly detection for suspicious behavior analysis
+- SOC triage and incident correlation design
+- MITRE ATT&CK mapping and analyst response guidance
+- API and dashboard development for security workflows
+
+## Roadmap
 
 - Replace template summaries with a hosted LLM provider
-- Add PostgreSQL persistence and user authentication
-- Add phishing email analysis as a second pipeline
-- Capture analyst feedback for future model tuning
+- Persist events and incidents in PostgreSQL
+- Add authentication and analyst feedback capture
+- Extend the project with phishing email analysis as a second pipeline
 
 ## License
 
