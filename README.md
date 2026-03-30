@@ -7,6 +7,10 @@
 
 SentinelAI is a cybersecurity project that simulates how a lightweight SOC triage workflow can use AI and anomaly detection to reduce analyst effort. It ingests authentication events, detects suspicious behavior, correlates related alerts into incidents, and generates structured summaries with MITRE ATT&CK mappings and response guidance.
 
+![SentinelAI Architecture](assets/architecture-overview.svg)
+
+![SentinelAI Data Flow](assets/data-flow.svg)
+
 ## Overview
 
 SentinelAI combines several practical security workflow components in one system:
@@ -111,15 +115,9 @@ A simple walkthrough:
 
 See [demo-script.md](/D:/sentinel-ai/docs/demo-script.md) for a short speaking script.
 
-## Screenshots
+## Images
 
-Add screenshots here once you capture them:
-
-- `assets/dashboard-overview.png`
-- `assets/incident-detail.png`
-- `assets/api-docs.png`
-
-If you add those files later, you can embed them directly in this README.
+The README includes architecture and data flow diagrams stored in the local `assets/` folder so GitHub renders them directly. You can still add dashboard screenshots later if you want to show the running UI.
 
 ## Roadmap
 
